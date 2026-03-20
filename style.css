@@ -1,0 +1,456 @@
+/* ===== Reset & Base ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #1a1a2e;
+  font-family: 'Noto Sans KR', sans-serif;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ===== App Container ===== */
+#app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #000;
+}
+
+/* ===== Game Canvas ===== */
+#game {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* ===== Overlay Base ===== */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ===== Pixel Border ===== */
+.pixel-border {
+  position: relative;
+  background: rgba(10, 10, 30, 0.92);
+  border: 3px solid #fff;
+  box-shadow:
+    0 0 0 3px #1a1a2e,
+    0 0 0 6px #fff,
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+  padding: 24px 20px;
+  color: #fff;
+}
+
+/* ===== Title Screen ===== */
+.title-content {
+  text-align: center;
+  width: 85%;
+  max-width: 340px;
+}
+
+.title-box {
+  margin-bottom: 20px;
+}
+
+.title-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #aaa;
+  margin-bottom: 12px;
+}
+
+.title-hearts {
+  color: #ff6b9d;
+  font-size: 14px;
+  letter-spacing: 8px;
+  margin-bottom: 8px;
+}
+
+.title-names {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  margin-bottom: 16px;
+}
+
+.title-names .heart-icon {
+  color: #ff6b9d;
+  display: inline-block;
+  animation: heartbeat 1.2s ease-in-out infinite;
+}
+
+.title-date {
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  margin-bottom: 6px;
+  color: #F1C40F;
+}
+
+.title-venue {
+  font-size: 13px;
+  color: #ccc;
+  font-weight: 300;
+}
+
+/* ===== Stage Start ===== */
+.stage-start-box {
+  text-align: center;
+  color: #fff;
+}
+
+.stage-start-box .stage-num {
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #F1C40F;
+  margin-bottom: 8px;
+}
+
+.stage-start-box .stage-name {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/* ===== Stage Info Card ===== */
+.info-card {
+  width: 85%;
+  max-width: 340px;
+  text-align: center;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.info-card h2 {
+  font-size: 12px;
+  color: #F1C40F;
+  letter-spacing: 3px;
+  margin-bottom: 6px;
+}
+
+.info-card h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.info-card p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #ddd;
+  font-weight: 300;
+}
+
+.info-card .info-detail {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.info-card .info-parents {
+  font-size: 13px;
+  color: #bbb;
+  margin-top: 12px;
+}
+
+.info-card .date-highlight {
+  font-size: 32px;
+  font-weight: 700;
+  color: #F1C40F;
+  margin: 12px 0 4px;
+}
+
+.info-card .venue-name {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 12px 0 4px;
+}
+
+.info-card .venue-address {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.map-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.map-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 12px;
+  font-family: 'Noto Sans KR', sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.map-btn:active {
+  background: rgba(255,255,255,0.2);
+}
+
+/* ===== Gallery ===== */
+.gallery-card {
+  width: 85%;
+  max-width: 340px;
+  text-align: center;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+#photo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+#photo-grid img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+
+.no-photos-msg {
+  font-size: 12px;
+  color: #888;
+  margin: 20px 0;
+  line-height: 1.6;
+}
+
+/* ===== Final Section ===== */
+#final-section {
+  align-items: flex-start;
+}
+
+.final-scroll {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding: 40px 7.5% 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.final-card {
+  text-align: center;
+  width: 100%;
+}
+
+.section-title {
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #F1C40F;
+  margin-bottom: 16px;
+}
+
+.account-group {
+  margin-bottom: 16px;
+}
+
+.account-group h3 {
+  font-size: 13px;
+  color: #ff6b9d;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.account-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  font-size: 13px;
+  color: #ddd;
+}
+
+.account-item .account-info {
+  text-align: left;
+}
+
+.account-item .account-bank {
+  font-size: 11px;
+  color: #999;
+}
+
+.copy-btn {
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  font-size: 11px;
+  font-family: 'Noto Sans KR', sans-serif;
+  cursor: pointer;
+  border-radius: 0;
+  transition: background 0.2s;
+}
+
+.copy-btn:active {
+  background: rgba(255,255,255,0.2);
+}
+
+.copy-btn.copied {
+  background: rgba(46, 204, 113, 0.3);
+  border-color: #2ECC71;
+}
+
+/* ===== Contacts ===== */
+.contact-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.contact-row .contact-label {
+  font-size: 13px;
+  color: #999;
+  width: 60px;
+  text-align: right;
+}
+
+.contact-row .contact-name {
+  font-size: 14px;
+  color: #fff;
+  width: 50px;
+}
+
+.contact-row a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.contact-row a:active {
+  background: rgba(255,255,255,0.15);
+}
+
+/* ===== Ending ===== */
+.ending-card {
+  padding: 40px 20px;
+}
+
+.ending-hearts {
+  color: #ff6b9d;
+  font-size: 20px;
+  letter-spacing: 12px;
+  margin-bottom: 16px;
+}
+
+.ending-msg {
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.ending-names {
+  font-size: 16px;
+  color: #F1C40F;
+  letter-spacing: 3px;
+  margin-bottom: 24px;
+}
+
+.pixel-btn {
+  padding: 10px 20px;
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 13px;
+  font-family: 'Noto Sans KR', sans-serif;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.pixel-btn:active {
+  background: rgba(255,255,255,0.2);
+}
+
+.next-btn {
+  display: block;
+  margin: 20px auto 0;
+  padding: 12px 24px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* ===== Utility ===== */
+.tap-hint {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  margin-top: 20px;
+  letter-spacing: 2px;
+}
+
+.blink {
+  animation: blink 1.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* ===== Scrollbar ===== */
+.final-scroll::-webkit-scrollbar {
+  width: 0;
+}
+
+/* ===== Desktop ===== */
+@media (min-width: 501px) {
+  #app {
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
+  }
+}

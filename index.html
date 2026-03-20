@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#1a1a2e">
+  <title>재준 ♥ 현서 결혼합니다</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <canvas id="game"></canvas>
+
+    <!-- 타이틀 화면 -->
+    <div id="title-screen" class="overlay active">
+      <div class="title-content">
+        <div class="pixel-border title-box">
+          <p class="title-label">WEDDING INVITATION</p>
+          <div class="title-hearts">&#9829; &#9829; &#9829;</div>
+          <h1 class="title-names">재준 <span class="heart-icon">&#9829;</span> 현서</h1>
+          <p class="title-date">2026. 10. 09</p>
+          <p class="title-venue">부산 윈덤그랜드 호텔</p>
+        </div>
+        <p class="blink tap-hint">터치하여 시작</p>
+      </div>
+    </div>
+
+    <!-- 스테이지 시작 안내 -->
+    <div id="stage-start" class="overlay">
+      <div class="stage-start-box">
+        <p class="stage-num"></p>
+        <p class="stage-name"></p>
+      </div>
+    </div>
+
+    <!-- 스테이지 클리어 정보 -->
+    <div id="stage-info" class="overlay">
+      <div class="pixel-border info-card">
+        <div id="info-content"></div>
+        <p class="blink tap-hint">터치하여 계속</p>
+      </div>
+    </div>
+
+    <!-- 갤러리 -->
+    <div id="gallery-section" class="overlay">
+      <div class="pixel-border gallery-card">
+        <h2 class="section-title">&#128247; GALLERY</h2>
+        <div id="photo-grid"></div>
+        <p class="blink tap-hint" id="gallery-next">터치하여 계속</p>
+        <p class="no-photos-msg" style="display:none;">
+          config.js의 photos 배열에<br>사진 파일명을 추가하세요
+        </p>
+      </div>
+    </div>
+
+    <!-- 마음 전하기 (계좌/연락처) -->
+    <div id="final-section" class="overlay">
+      <div class="final-scroll">
+        <div class="pixel-border final-card">
+          <h2 class="section-title">&#128140; 마음 전하기</h2>
+          <div id="accounts-groom" class="account-group"></div>
+          <div id="accounts-bride" class="account-group"></div>
+        </div>
+        <div class="pixel-border final-card">
+          <h2 class="section-title">&#128222; 연락하기</h2>
+          <div id="contacts-container"></div>
+        </div>
+        <div class="pixel-border final-card ending-card">
+          <div class="ending-hearts">&#9829; &#9829; &#9829;</div>
+          <p class="ending-msg">축하해주셔서<br>감사합니다</p>
+          <p class="ending-names">재준 &amp; 현서</p>
+          <button id="restart-btn" class="pixel-btn">처음부터 다시 플레이</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
